@@ -62,3 +62,26 @@ data.pages = [
   );
 }
 ```
+
+### 다음 페이지 불러오기
+
+더보기 버튼이나 Intersection Observer로 부른다.
+
+1. 버튼 방식
+
+   ```ts
+   <button
+     disabled={!hasNextPage || isFetchingNextPage}
+     onClick={() => fetchNextPage()}
+   >
+     {isFetchingNextPage
+       ? "Loading..."
+       : hasNextPage
+       ? "Load More"
+       : "No More Posts"}
+   </button>
+   ```
+
+2. 스크롤 자동 방식
+
+   Intersection Observer로 마지막 요소를 감지해서 fetchNextPage()를 호출한다.
